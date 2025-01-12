@@ -1,16 +1,11 @@
 package com.example.hr_payroll.domain.entities;
 
-import org.hibernate.annotations.GeneratorType;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "tb_payroll")
+
 public class Payment implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private static final long serialVersionUID = 1L;
     private String name;
     private Double dailyIncome;
     private Integer days;
