@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Component
-@FeignClient(url = "${spring.worker.url}", name = "${spring.worker.application.name}")
+@FeignClient(name = "hr-worker")
 public interface FeingRest {
     @GetMapping("/workers/worker/{id}")
     public Worker buscarTrabalhador(@PathVariable Long id);

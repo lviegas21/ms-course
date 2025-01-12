@@ -17,6 +17,7 @@ public class PayrollController {
     @Autowired
     private PayrollService service;
 
+
     @GetMapping("/worker/{id}/days/{days}")
     public ResponseEntity<Payment> getPayment(@PathVariable Long id, @PathVariable Integer days){
         Payment payment = service.getPayment(id, days);
