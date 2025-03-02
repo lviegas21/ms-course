@@ -49,4 +49,13 @@ public class Worker implements Serializable  {
     public int hashCode() {
         return Objects.hash(id, name, dailyIncome);
     }
+
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dailyIncome=" + dailyIncome +
+                '}';
+    }
 }

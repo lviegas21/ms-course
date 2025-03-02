@@ -1,0 +1,34 @@
+<configuration>
+
+    <!-- Configuração do Console Logger -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Configuração do log exclusivo para OnlineUserLogService -->
+    <appender name="ONLINE_USER_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/online-users.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/online-users-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>5</maxHistory>
+            <totalSizeCap>50MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%msg%n</pattern>  <!-- Apenas a mensagem, sem metadados -->
+        </encoder>
+    </appender>
+
+    <!-- Logger principal para exibir logs no console -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <!-- Logger exclusivo para OnlineUserLogService -->
+    <logger name="OnlineUserLogger" level="INFO" additivity="false">
+        <appender-ref ref="ONLINE_USER_LOG"/>
+        <appender-ref ref="CONSOLE"/> <!-- Também exibe no console -->
+    </logger>
+
+</configuration>
